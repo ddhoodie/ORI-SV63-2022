@@ -1,0 +1,51 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pycache
+*.env
+*.venv
+env/
+venv/
+*.egg-info/
+*.egg
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# VSCode i ostali IDE fajlovi
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS fajlovi
+.DS_Store
+Thumbs.db
+
+# Logovi i privremeni fajlovi
+*.log
+logs/
+*.tmp
+
+# Virtualne environment
+.venv/
+env/
+
+# Data
+data/*.csv
+data/*.json
+data/*.parquet
+!data/.gitkeep  # zadrži folder
+
+# Models
+models/
+!models/.gitkeep  # zadrži folder
+
+# HuggingFace cache (ne mora da se prati)
+cache/
+
+data/IMDB_reviews.json
+data/IMDB_reviews_cleaned.csv
+data/IMDB_reviews_transformer_cleaned.csv
