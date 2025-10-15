@@ -5,6 +5,9 @@ from transformer_config import TRANSFORMER_MODELS
 import torch
 import os
 
+BASE_DIR = "."
+MODEL_DIR = f"{BASE_DIR}/models"
+LOG_DIR = f"{BASE_DIR}/logs"
 def compute_metrics(pred):
     preds = pred.predictions.argmax(-1)
     precision, recall, f1, _ = precision_recall_fscore_support(pred.label_ids, preds, average='binary')
@@ -20,11 +23,14 @@ def train_transformer_model(X_train, y_train, X_val, y_val, model_key="distilber
 
     def tokenize_fn(examples):
         return tokenizer(
-            examples["text"], 
-            truncation=True, 
-            padding="max_length", 
+            examples["text"],
+            truncation=True,
+            padding="max_length",
             max_length=cfg["max_length"]
         )
+
+    y_train = [int(x) for x in y_train]
+    y_val = [int(x) for x in y_val]
 
     train_dataset = Dataset.from_dict({"text": X_train, "label": y_train})
     val_dataset = Dataset.from_dict({"text": X_val, "label": y_val})
@@ -33,7 +39,7 @@ def train_transformer_model(X_train, y_train, X_val, y_val, model_key="distilber
 
     model = AutoModelForSequenceClassification.from_pretrained(model_name, num_labels=2)
 
-    output_dir = f"../models/{model_key}_output"
+    output_dir = f"{MODEL_DIR}/{model_key}_output"
     os.makedirs(output_dir, exist_ok=True)
 
     training_args = TrainingArguments(
@@ -46,7 +52,7 @@ def train_transformer_model(X_train, y_train, X_val, y_val, model_key="distilber
         num_train_epochs=cfg["epochs"],
         weight_decay=0.01,
         load_best_model_at_end=True,
-        logging_dir=f"../logs/{model_key}",
+        logging_dir=f"{LOG_DIR}/{model_key}",
         logging_steps=100,
     )
 
@@ -60,7 +66,8 @@ def train_transformer_model(X_train, y_train, X_val, y_val, model_key="distilber
     )
 
     trainer.train()
-    trainer.save_model(f"../models/{model_key}_finetuned")
-    print(f"✅ Model '{model_key}' sačuvan u ../models/{model_key}_finetuned\n")
+    finetuned_dir = f"{MODEL_DIR}/{model_key}_finetuned"
+    trainer.save_model(finetuned_dir)
+    print(f"✅ Model '{model_key}' sačuvan u {finetuned_dir}\n")
 
     return model, tokenizer

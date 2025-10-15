@@ -5,10 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="13c84114-73f2-468d-aa39-f6db2719492e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/train_all_transformers.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transformer_config.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/run_transformers.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/run_transformers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/train_all_transformers.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/train_all_transformers.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/transformers_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transformers_model.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -78,7 +76,7 @@
       <updated>1758484408238</updated>
       <workItem from="1758484409264" duration="3490000" />
       <workItem from="1760437747215" duration="14339000" />
-      <workItem from="1760509491937" duration="1024000" />
+      <workItem from="1760509491937" duration="3078000" />
     </task>
     <servers />
   </component>

@@ -6,21 +6,25 @@ from evaluate import evaluate_model_transformer
 from preprocessing import clean_text_transformer
 from transformer_config import TRANSFORMER_MODELS
 
-# --- Dataset priprema ---
-raw_path = "../data/IMDB_reviews.json"
-cleaned_path = "../data/IMDB_reviews_transformer_cleaned.csv"
+BASE_DIR = "."
+RESULTS_DIR = f"{BASE_DIR}/results"
+MODEL_KEYS = ["distilbert", "bert", "roberta"]
+DATA_DIR = f"{BASE_DIR}/data"
+RAW_DATA_PATH = f"{DATA_DIR}/IMDB_reviews.json"
+CLEANED_DATA_PATH = f"{DATA_DIR}/IMDB_reviews_transformer_cleaned.csv"
 
-if os.path.exists(cleaned_path):
-    df = pd.read_csv(cleaned_path)
+# --- Dataset priprema ---
+if os.path.exists(CLEANED_DATA_PATH):
+    df = pd.read_csv(CLEANED_DATA_PATH)
     print("Učitano očišćeno za transformer!")
 else:
-    df = pd.read_json(raw_path, lines=True)
+    df = pd.read_json(RAW_DATA_PATH, lines=True)
     print(f"Učitano {len(df)} recenzija iz originalnog JSON-a")
     df["clean_review"] = df["review_text"].apply(clean_text_transformer)
-    df.to_csv(cleaned_path, index=False)
-    print(f"Sačuvan očišćeni dataset u {cleaned_path}")
+    df.to_csv(CLEANED_DATA_PATH, index=False)
+    print(f"Sačuvan očišćeni dataset u {CLEANED_DATA_PATH}")
 
-# uzorak radi brzine
+# Uzorak radi brzine
 df = df.sample(n=5000, random_state=42).reset_index(drop=True)
 print(f"Koristim {len(df)} recenzija za trening i evaluaciju.")
 
@@ -40,7 +44,7 @@ print(f"Train: {len(X_train)}, Val: {len(X_val)}, Test: {len(X_test)}")
 # --- Treniraj više modela ---
 results = []
 
-for model_key in ["distilbert", "bert", "roberta"]:
+for model_key in MODEL_KEYS:
     print("=" * 60)
     print(f"🚀 Treniranje modela: {model_key}")
     print("=" * 60)
@@ -51,16 +55,18 @@ for model_key in ["distilbert", "bert", "roberta"]:
         model_key=model_key
     )
 
-    metrics = evaluate_model_transformer(model, tokenizer, X_test, y_test)
+    metrics = evaluate_model_transformer(model, tokenizer, X_test.tolist(), y_test.tolist())
     results.append({"model": model_key, **metrics})
 
 # --- Rezime rezultata ---
+os.makedirs(RESULTS_DIR, exist_ok=True)
 results_df = pd.DataFrame(results)
 print("\nRezultati svih modela:")
 print(results_df)
 
 best = results_df.sort_values(by="f1", ascending=False).iloc[0]
-print(f"\nNajbolji model: {best['model']} (F1={best['f1']:.4f})")
+print(f"\n🏆 Najbolji model: {best['model']} (F1={best['f1']:.4f})")
 
-results_df.to_csv("../results/transformer_comparison.csv", index=False)
-print("\nRezultati sačuvani u ../results/transformer_comparison.csv")
+results_path = f"{RESULTS_DIR}/transformer_comparison.csv"
+results_df.to_csv(results_path, index=False)
+print(f"\n📊 Rezultati sačuvani u {results_path}")
