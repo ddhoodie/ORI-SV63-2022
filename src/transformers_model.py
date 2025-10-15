@@ -17,7 +17,7 @@ def compute_metrics(pred):
 def train_transformer_model(X_train, y_train, X_val, y_val, model_key="distilbert"):
     cfg = TRANSFORMER_MODELS[model_key]
     model_name = cfg["name"]
-    print(f"\n🔧 Fine-tuning modela: {model_name}\n")
+    print(f"\nFine-tuning modela: {model_name}\n")
 
     tokenizer = AutoTokenizer.from_pretrained(model_name)
 
@@ -68,6 +68,6 @@ def train_transformer_model(X_train, y_train, X_val, y_val, model_key="distilber
     trainer.train()
     finetuned_dir = f"{MODEL_DIR}/{model_key}_finetuned"
     trainer.save_model(finetuned_dir)
-    print(f"✅ Model '{model_key}' sačuvan u {finetuned_dir}\n")
+    print(f"Model '{model_key}' sačuvan u {finetuned_dir}\n")
 
     return model, tokenizer

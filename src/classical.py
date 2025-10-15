@@ -7,7 +7,7 @@ from imblearn.over_sampling import RandomOverSampler
 import joblib
 
 def train_classical_models(X_train, X_val, y_train, y_val):
-    print("🔧 Pokrećem TF-IDF i oversampling...")
+    print("TF-IDF i oversampling...")
 
     # 1 Oversampling da izjednačimo klase (ako je neuravnotežen dataset)
     ros = RandomOverSampler(random_state=42)

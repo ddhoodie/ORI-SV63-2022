@@ -1,6 +1,7 @@
 # src/evaluate.py
 import matplotlib.pyplot as plt
 from sklearn.metrics import classification_report, confusion_matrix, ConfusionMatrixDisplay
+from sympy.printing.pytorch import torch
 
 
 def evaluate_model_classical(model, X_test, y_test, vectorizer, model_name="Model"):
@@ -29,11 +30,11 @@ def evaluate_model_transformer(model, tokenizer, X_test, y_test, model_name="Tra
     model.eval()
 
     preds = []
-    true_labels = y_test.tolist()
+    true_labels = y_test
 
     with torch.no_grad():
         for i in range(0, len(X_test), batch_size):
-            batch_texts = X_test[i:i+batch_size].tolist()
+            batch_texts = X_test[i:i+batch_size]
             encodings = tokenizer(batch_texts, padding=True, truncation=True, max_length=256, return_tensors="pt").to(device)
             outputs = model(**encodings)
             logits = outputs.logits

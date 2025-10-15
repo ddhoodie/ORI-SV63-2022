@@ -4,7 +4,6 @@ from sklearn.model_selection import train_test_split
 from transformers_model import train_transformer_model
 from evaluate import evaluate_model_transformer
 from preprocessing import clean_text_transformer
-from transformer_config import TRANSFORMER_MODELS
 
 BASE_DIR = "."
 RESULTS_DIR = f"{BASE_DIR}/results"
@@ -27,6 +26,25 @@ else:
 # Uzorak radi brzine
 df = df.sample(n=5000, random_state=42).reset_index(drop=True)
 print(f"Koristim {len(df)} recenzija za trening i evaluaciju.")
+
+# Uravnoteziti dataset
+from sklearn.utils import resample
+
+df_majority = df[df.is_spoiler == 0]
+df_minority = df[df.is_spoiler == 1]
+
+df_minority_upsampled = resample(
+    df_minority,
+    replace=True,                     # uzorkuj sa ponavljanjem
+    n_samples=len(df_majority),       # izjednači broj uzoraka
+    random_state=42
+)
+
+df_balanced = pd.concat([df_majority, df_minority_upsampled])
+df = df_balanced.sample(frac=1, random_state=42).reset_index(drop=True)
+
+print("✅ Dataset uravnotežen!")
+print(df["is_spoiler"].value_counts())
 
 # --- Split podataka ---
 X = df["clean_review"]
