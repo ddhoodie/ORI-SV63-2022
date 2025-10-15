@@ -1,8 +1,9 @@
-# src/transformers_model.py
 from transformers import AutoTokenizer, AutoModelForSequenceClassification, Trainer, TrainingArguments
 from sklearn.metrics import precision_recall_fscore_support, accuracy_score
 from datasets import Dataset
+from transformer_config import TRANSFORMER_MODELS
 import torch
+import os
 
 def compute_metrics(pred):
     preds = pred.predictions.argmax(-1)
@@ -10,39 +11,45 @@ def compute_metrics(pred):
     acc = accuracy_score(pred.label_ids, preds)
     return {"accuracy": acc, "precision": precision, "recall": recall, "f1": f1}
 
-def train_transformer_model(X_train, y_train, X_val, y_val, model_name="distilbert-base-uncased"):
-    print(f"Fine-tuning {model_name}...")
+def train_transformer_model(X_train, y_train, X_val, y_val, model_key="distilbert"):
+    cfg = TRANSFORMER_MODELS[model_key]
+    model_name = cfg["name"]
+    print(f"\n🔧 Fine-tuning modela: {model_name}\n")
 
-    # 1 Tokenizacija
     tokenizer = AutoTokenizer.from_pretrained(model_name)
-    def tokenize_fn(examples):
-        return tokenizer(examples["text"], truncation=True, padding="max_length", max_length=256)
 
-    # 2 Kreiraj HuggingFace Dataset
+    def tokenize_fn(examples):
+        return tokenizer(
+            examples["text"], 
+            truncation=True, 
+            padding="max_length", 
+            max_length=cfg["max_length"]
+        )
+
     train_dataset = Dataset.from_dict({"text": X_train, "label": y_train})
     val_dataset = Dataset.from_dict({"text": X_val, "label": y_val})
     train_dataset = train_dataset.map(tokenize_fn, batched=True)
     val_dataset = val_dataset.map(tokenize_fn, batched=True)
 
-    # 3 Model
     model = AutoModelForSequenceClassification.from_pretrained(model_name, num_labels=2)
 
-    # 4 Trening argumenti
+    output_dir = f"../models/{model_key}_output"
+    os.makedirs(output_dir, exist_ok=True)
+
     training_args = TrainingArguments(
-        output_dir="../models/transformers_output",
-        evaluation_strategy="epoch",
+        output_dir=output_dir,
+        eval_strategy="epoch",
         save_strategy="epoch",
-        learning_rate=2e-5,
-        per_device_train_batch_size=16,
-        per_device_eval_batch_size=32,
-        num_train_epochs=3,
+        learning_rate=cfg["learning_rate"],
+        per_device_train_batch_size=cfg["batch_size"],
+        per_device_eval_batch_size=cfg["batch_size"] * 2,
+        num_train_epochs=cfg["epochs"],
         weight_decay=0.01,
         load_best_model_at_end=True,
-        logging_dir="../logs",
-        logging_steps=50,
+        logging_dir=f"../logs/{model_key}",
+        logging_steps=100,
     )
 
-    # 5 Trener
     trainer = Trainer(
         model=model,
         args=training_args,
@@ -53,7 +60,7 @@ def train_transformer_model(X_train, y_train, X_val, y_val, model_name="distilbe
     )
 
     trainer.train()
-    trainer.save_model("../models/distilbert_finetuned")
+    trainer.save_model(f"../models/{model_key}_finetuned")
+    print(f"✅ Model '{model_key}' sačuvan u ../models/{model_key}_finetuned\n")
 
-    print("Model sačuvan u ../models/distilbert_finetuned")
     return model, tokenizer

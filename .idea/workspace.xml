@@ -5,31 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="13c84114-73f2-468d-aa39-f6db2719492e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitgnore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/projekat.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/IMDB_movie_details.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/IMDB_reviews.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/IMDB_reviews_cleaned.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/log_reg.pkl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/log_reg_1.pkl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/naive_bayes.pkl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/naive_bayes_1.pkl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/tfidf_vectorizer.pkl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/tfidf_vectorizer_1.pkl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/classical.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/evaluate.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/preprocessing.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/run_transformers.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transformers_model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/train_all_transformers.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/transformer_config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/run_transformers.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/run_transformers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transformers_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transformers_model.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,28 +34,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Python.classical.executor": "Run",
-    "Python.main.executor": "Run",
-    "Python.preprocessing.executor": "Run",
-    "Python.run_transformers.executor": "Run",
-    "Python.test.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "junie.onboarding.icon.badge.shown": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "to.speed.mode.migration.done": "true",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Python.classical.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.preprocessing.executor&quot;: &quot;Run&quot;,
+    &quot;Python.run_transformers.executor&quot;: &quot;Run&quot;,
+    &quot;Python.test.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\vikto\Old data\sesti_semestar\ai\projekat\data" />
@@ -97,7 +77,8 @@
       <option name="presentableId" value="Default" />
       <updated>1758484408238</updated>
       <workItem from="1758484409264" duration="3490000" />
-      <workItem from="1760437747215" duration="9257000" />
+      <workItem from="1760437747215" duration="14339000" />
+      <workItem from="1760509491937" duration="1024000" />
     </task>
     <servers />
   </component>
