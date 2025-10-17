@@ -4,7 +4,7 @@ import nltk
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 
-# Preuzmi potrebne resurse NLTK (odkomentariši prvi put)
+# (odkomentariši prvi put)
 # nltk.download('stopwords')
 # nltk.download('punkt')
 # nltk.download('wordnet')

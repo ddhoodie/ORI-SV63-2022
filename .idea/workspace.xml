@@ -5,13 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="13c84114-73f2-468d-aa39-f6db2719492e" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/dokumentacija.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results/5000bert.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results/5000distilbert.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data_analysis.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/evaluate_all.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/result_analysis.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/classical.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/classical.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/evaluate.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/evaluate.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/run_transformers.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/train_all_classical.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/preprocessing.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/preprocessing.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/train_all_transformers.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/train_all_transformers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transformers_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transformers_model.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +25,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Jupyter Notebook" />
         <option value="Python Script" />
       </list>
     </option>
@@ -41,10 +46,15 @@
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
     &quot;Python.app.executor&quot;: &quot;Run&quot;,
     &quot;Python.classical.executor&quot;: &quot;Run&quot;,
+    &quot;Python.data_analysis.executor&quot;: &quot;Run&quot;,
+    &quot;Python.evaluate_all.executor&quot;: &quot;Run&quot;,
     &quot;Python.main.executor&quot;: &quot;Run&quot;,
     &quot;Python.preprocessing.executor&quot;: &quot;Run&quot;,
+    &quot;Python.random.executor&quot;: &quot;Run&quot;,
+    &quot;Python.result_analysis.executor&quot;: &quot;Run&quot;,
     &quot;Python.run_transformers.executor&quot;: &quot;Run&quot;,
     &quot;Python.test.executor&quot;: &quot;Run&quot;,
+    &quot;Python.train_all_transformers.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
@@ -65,6 +75,8 @@
       <recent name="C:\Users\vikto\Old data\sesti_semestar\ai\projekat\models" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\vikto\Old data\sesti_semestar\ai\projekat\results" />
+      <recent name="C:\Users\vikto\Old data\sesti_semestar\ai\projekat" />
       <recent name="C:\Users\vikto\Old data\sesti_semestar\ai\projekat\data" />
     </key>
   </component>
@@ -86,7 +98,10 @@
       <workItem from="1758484409264" duration="3490000" />
       <workItem from="1760437747215" duration="14339000" />
       <workItem from="1760509491937" duration="10763000" />
-      <workItem from="1760533433986" duration="1116000" />
+      <workItem from="1760533433986" duration="2406000" />
+      <workItem from="1760622117542" duration="7186000" />
+      <workItem from="1760647370743" duration="6667000" />
+      <workItem from="1760690527758" duration="7403000" />
     </task>
     <servers />
   </component>
@@ -95,10 +110,15 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/projekat$classical.coverage" NAME="classical Coverage Results" MODIFIED="1760453200020" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/projekat$result_analysis.coverage" NAME="result_analysis Coverage Results" MODIFIED="1760694097990" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/projekat$evaluate_all.coverage" NAME="evaluate_all Coverage Results" MODIFIED="1760652522072" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/projekat$main.coverage" NAME="main Coverage Results" MODIFIED="1760458159447" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/projekat$random.coverage" NAME="random Coverage Results" MODIFIED="1760638602229" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/projekat$preprocessing.coverage" NAME="preprocessing Coverage Results" MODIFIED="1760451400179" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/projekat$train_all_transformers.coverage" NAME="train_all_transformers Coverage Results" MODIFIED="1760638776952" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/projekat$app.coverage" NAME="app Coverage Results" MODIFIED="1760528750044" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/projekat$test.coverage" NAME="test Coverage Results" MODIFIED="1760459652799" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/projekat$run_transformers.coverage" NAME="run_transformers Coverage Results" MODIFIED="1760459923326" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/projekat$data_analysis.coverage" NAME="data_analysis Coverage Results" MODIFIED="1760652685076" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
   </component>
 </project>

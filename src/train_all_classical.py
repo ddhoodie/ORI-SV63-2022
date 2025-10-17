@@ -6,33 +6,27 @@ from classical import train_classical_models
 from evaluate import evaluate_model_classical
 import os
 
-# učitaj dataset
 df = pd.read_json("../data/IMDB_reviews.json", lines=True)
 
-# filtriraj recenzije koje imaju manje od 10 reči
+# manje od 10 reči
 # df['word_count'] = df['review_text'].apply(lambda x: len(str(x).split()))
 # df = df[df['word_count'] >= 10].reset_index(drop=True)
 # print(f"Dataset nakon filtriranja: {len(df)} recenzija ostalo.")
 
-# putanja gde ćemo sačuvati očišćeni dataset
 cleaned_path = "../data/IMDB_reviews_cleaned.csv"
 
 if os.path.exists(cleaned_path):
-    # ako već postoji očišćeni dataset, samo učitaj
     df = pd.read_csv(cleaned_path)
     print("Učitano očišćeno!")
 else:
-    # kreiraj novu kolonu sa očišćenim tekstom
     df['clean_review'] = df['review_text'].apply(clean_text_classical)
 
-    # sačuvaj očišćeni dataset za buduće korišćenje
     df.to_csv(cleaned_path, index=False)
     print("Očišćeni dataset sačuvan!")
 
-# proveri rezultate
 # print(df[['review_text', 'clean_review']].head())
 
-X = df['clean_review']  # očišćeni tekst
+X = df['clean_review']
 y = df['is_spoiler']    # ciljni atribut (0/1)
 
 # 70% train, 15% validation, 15% test

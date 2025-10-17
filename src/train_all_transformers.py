@@ -8,7 +8,7 @@ from preprocessing import clean_text_transformer
 BASE_DIR = "."
 RESULTS_DIR = f"{BASE_DIR}/results"
 MODEL_KEYS = ["distilbert", "bert", "roberta"]
-DATA_DIR = f"{BASE_DIR}/data"
+DATA_DIR = f"{BASE_DIR}./data"
 RAW_DATA_PATH = f"{DATA_DIR}/IMDB_reviews.json"
 CLEANED_DATA_PATH = f"{DATA_DIR}/IMDB_reviews_transformer_cleaned.csv"
 
@@ -35,8 +35,8 @@ df_minority = df[df.is_spoiler == 1]
 
 df_minority_upsampled = resample(
     df_minority,
-    replace=True,                     # uzorkuj sa ponavljanjem
-    n_samples=len(df_majority),       # izjednači broj uzoraka
+    replace=True,                     # uzorkovati sa ponavljanjem
+    n_samples=len(df_majority),       # izjednačiti broj uzoraka
     random_state=42
 )
 
@@ -59,7 +59,7 @@ X_train, X_val, y_train, y_val = train_test_split(
 
 print(f"Train: {len(X_train)}, Val: {len(X_val)}, Test: {len(X_test)}")
 
-# --- Treniraj više modela ---
+# --- Treniranje ---
 results = []
 
 for model_key in MODEL_KEYS:
@@ -83,8 +83,8 @@ print("\nRezultati svih modela:")
 print(results_df)
 
 best = results_df.sort_values(by="f1", ascending=False).iloc[0]
-print(f"\n🏆 Najbolji model: {best['model']} (F1={best['f1']:.4f})")
+print(f"\nNajbolji model: {best['model']} (F1={best['f1']:.4f})")
 
 results_path = f"{RESULTS_DIR}/transformer_comparison.csv"
 results_df.to_csv(results_path, index=False)
-print(f"\n📊 Rezultati sačuvani u {results_path}")
+print(f"\nRezultati sačuvani u {results_path}")
