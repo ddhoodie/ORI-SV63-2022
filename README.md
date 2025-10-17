@@ -15,6 +15,8 @@ Puna dokumentacija projekta se nalazi u folderu dokumentacija u formatu Jupyter 
 ## Modeli
 Klasični modeli: Naive Bayes, Logistic Regression
 Transformer model: DistilBERT finetuned
+Model DistilBert nije na github-u zbog veličine fajla. Takođe ni sami datasetovi.
 
-
+## 
 ### Projektni rad iz predmeta Osnove računarske inteligencije
+
